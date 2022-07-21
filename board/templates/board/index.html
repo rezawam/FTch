@@ -11,6 +11,9 @@
         <input type="text" name="post_text">
     </label>
     <input type="submit" value="Post">
-    </form>
+</form>
+{% for post in posts %}
+<p>{{ post.post_text }} ----- {{ post.pub_date }} – <a href="{% url 'board:post' post.id %}">Reply</a></p>
+{% endfor %}
 </body>
 </html>

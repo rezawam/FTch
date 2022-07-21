@@ -1,10 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.utils import timezone
+from django.views import generic
 
-from .models import PostForm
+from .models import PostForm, Post
 
-def get_post(request):
+class PostView(generic.DetailView):
+    model = Post
+    template_name = 'board/post.html'
+
+
+def get_post(request):  # refactor to CBV
+    posts = Post.objects.all()
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
@@ -15,5 +22,9 @@ def get_post(request):
             return HttpResponseRedirect('/b/')
     else:
         form = PostForm()
-    return render(request, 'board/index.html', {'form': form})
+    return render(request, 'board/index.html', {
+        'form': form,
+        'posts': posts,
+})
+
 
