@@ -19,5 +19,11 @@ from django.urls import path, include
 urlpatterns = [
     path('', include('home.urls')),
     path('admin/', admin.site.urls),
-    path('b/', include('board.urls', namespace='board')),
+    path('<str:brd>/', include('board.urls', namespace='board')),
+
+    # path('<boards[]>/thread/<int:pk>', views.get_comment, name='post'),
+    # path('b/', include('board.urls', namespace='board')),
+    # path('faki/', include('board.urls', namespace='board')),
 ]
+
+

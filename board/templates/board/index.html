@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>/b/ред</title>
+    <title>/{{ brd }}/ – {{ title }}</title>
 </head>
 <body>
-<form action="/b/" method="post">
+<form action="/{{ brd }}/" method="post">
       {% csrf_token %}
     <label>
         <input type="text" name="post_text">
@@ -13,7 +13,7 @@
     <input type="submit" value="Post">
 </form>
 {% for post in posts %}
-<p>{{ post.post_text }} ----- {{ post.pub_date }} – <a href="{% url 'board:post' post.id %}">Reply</a></p>
+<p>{{ post.post_text }} ----- {{ post.pub_date }} – <a href="/{{ brd }}/thread/{{ post.pk }}">Reply</a></p>
 {% endfor %}
 </body>
 </html>

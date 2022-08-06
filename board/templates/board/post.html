@@ -2,19 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>berba</title>
+    <title>Thread</title>
 </head>
 <body>
-<p>{{ post.pub_date }}</p>
-<p><b>{{ post.post_text }}</b></p>
 
-<form action="{% url 'board:post' post.id %}" method="post">
+<h2>{{ p.post_text }}</h2>
+<p>{{ p.pub_date }}</p>
+
+<hr>
+
+<form method="post">
       {% csrf_token %}
     <label>
         <input type="text" name="post_text">
     </label>
-    <input type="submit" value="Reply">
+    <input type="submit" value="Post">
 </form>
+
+<ul>
+{% for comment in comments %}
+<li>
+<p>{{ comment.post_text }}</p>
+<p>{{ comment.pub_date }}</p>
+</li>
+{% endfor %}
+</ul>
+
+
 
 </body>
 </html>

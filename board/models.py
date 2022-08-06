@@ -1,6 +1,7 @@
 from django.db import models
 from django.forms import ModelForm
 
+BOARDS = {'b': 'Бред', 'soc': 'Общение', 'un': 'Образование'}
 
 class Post(models.Model):
     post_text = models.TextField()
