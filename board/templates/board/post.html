@@ -1,34 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Thread</title>
-</head>
-<body>
+{% extends 'board/base.html' %}
 
-<h2>{{ p.post_text }}</h2>
-<p>{{ p.pub_date }}</p>
+{% block content %}
 
-<hr>
+    <div class="home">
+        <h1>{{ board_name }}</h1>
+        <h2>Ответить в тред</h2>
 
-<form method="post">
-      {% csrf_token %}
-    <label>
-        <input type="text" name="post_text">
-    </label>
-    <input type="submit" value="Post">
-</form>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="post_text">
+            <input type="submit" value="Отправить">
+        </form>
+    </div>
 
-<ul>
-{% for comment in comments %}
-<li>
-<p>{{ comment.post_text }}</p>
-<p>{{ comment.pub_date }}</p>
-</li>
-{% endfor %}
-</ul>
+    <hr>
 
 
+    <div class="post">
+    <p class="date">
+    {{ p.pub_date }} #{{ p.pk }}
+    </p>{{ p.post_text }}
+    </div>
 
-</body>
-</html>
+
+    {% for comment in comments %}
+        <div class="fuck">
+        <div class="quote">>></div>
+        <div class="comment_container">
+        <div class="comment"> <div class="date">
+        {{ comment.pub_date }} #{{ comment.pk }}
+        </div>
+            <div class="text">{{ comment.post_text }} </div></div>
+        </div>
+        </div>
+
+    {% endfor %}
+
+
+{% endblock %}

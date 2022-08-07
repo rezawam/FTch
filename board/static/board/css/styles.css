@@ -1,0 +1,88 @@
+body {
+  font-family: Arial, Verdana,  sans-serif; /* Семейство шрифтов */
+  font-size: 11pt; /* Размер основного шрифта в пунктах  */
+  background-color: #ECF0F8; /* Цвет фона веб-страницы */
+  color: #333; /* Цвет основного текста */
+
+}
+
+hr {
+  border: 0.5px solid #DADADA;
+}
+
+
+.home {
+  text-align: center
+}
+
+h1 {
+  color: #0a53a4; /* Цвет заголовка */
+  font-size: 24pt; /* Размер шрифта в пунктах */
+  font-family: Arial, Times, serif; /* Семейство шрифтов */
+  font-weight: bold; /* Нормальное начертание текста  */
+}
+
+h2 {
+  color: #0a53a4; /* Цвет заголовка */
+  font-size: 18pt; /* Размер шрифта в пунктах */
+  font-family: Arial, Times, serif; /* Семейство шрифтов */
+  font-weight: normal; /* Нормальное начертание текста  */
+}
+
+a {
+  color: #0a53a4;
+}
+
+a:hover {
+  color: #0D4079;
+}
+
+.welcome {
+  font-size: 17px;
+}
+
+.date {
+  font-size: 12px;
+}
+
+.fuck {
+  overflow: hidden;
+}
+
+.comment_container {
+  border: 0.5px solid #4A5A80;
+  margin-left: 20px;
+  width: fit-content;
+  max-width: 80%;
+  min-width: 420px;
+  background: #D9DDE6;
+  margin-bottom: 3px;
+  overflow: hidden;
+
+}
+
+.quote {
+  float: left;
+  color: #4A5A80;
+}
+
+.comment {
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 15px;
+  word-break: break-all;
+}
+
+.text {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 10px;
+}
+
+.post {
+  word-break: break-all;
+  width: fit-content;
+  max-width: 80%;
+  min-width: 420px;
+  margin-bottom: 15px;
+}

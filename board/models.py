@@ -1,11 +1,12 @@
 from django.db import models
 from django.forms import ModelForm
+from django.utils.timezone import now
 
 BOARDS = {'b': 'Бред', 'soc': 'Общение', 'un': 'Образование'}
 
 class Post(models.Model):
     post_text = models.TextField()
-    pub_date = models.DateTimeField()
+    pub_date = models.DateTimeField(auto_now_add=now)
     board = models.CharField(max_length=5)
     parent_post_id = models.IntegerField(default=0)
 

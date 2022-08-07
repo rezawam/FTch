@@ -1,19 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>/{{ brd }}/ – {{ title }}</title>
-</head>
-<body>
-<form action="/{{ brd }}/" method="post">
-      {% csrf_token %}
-    <label>
+{% extends 'board/base.html' %}
+
+{% block content %}
+
+<div class="home">
+    <h1>{{ board_name }}</h1>
+    <h2>Создать тред</h2>
+
+    <form action="/{{ brd }}/" method="post">
+        {% csrf_token %}
         <input type="text" name="post_text">
-    </label>
-    <input type="submit" value="Post">
-</form>
+        <input type="submit" value="Отправить">
+    </form>
+</div>
+
+    <hr>
+
 {% for post in posts %}
-<p>{{ post.post_text }} ----- {{ post.pub_date }} – <a href="/{{ brd }}/thread/{{ post.pk }}">Reply</a></p>
+    <p class="date">
+    {{ post.pub_date }} #{{ post.pk }} <a href="/{{ brd }}/thread/{{ post.pk }}">Ответ</a>
+    </p>{{ post.post_text }}<hr>
 {% endfor %}
-</body>
-</html>
+{% endblock %}

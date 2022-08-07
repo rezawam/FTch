@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from board.views import PostAPIView
 
 urlpatterns = [
     path('', include('home.urls')),
     path('admin/', admin.site.urls),
     path('<str:brd>/', include('board.urls', namespace='board')),
+    path('api/postlist/', PostAPIView.as_view()),
 
     # path('<boards[]>/thread/<int:pk>', views.get_comment, name='post'),
     # path('b/', include('board.urls', namespace='board')),
