@@ -2,13 +2,16 @@
 
 {% block content %}
 
+
 <div class="home">
     <h1>{{ board_name }}</h1>
     <h2>Создать тред</h2>
 
-    <form action="/{{ brd }}/" method="post">
+    <form action="/{{ brd }}/" method="post" >
         {% csrf_token %}
-        <input type="text" name="post_text">
+        <label>
+            <textarea type="text" name="text" rows="8" cols="35" placeholder="Максимум 15 000 символов"></textarea>
+        </label> <br>
         <input type="submit" value="Отправить">
     </form>
 </div>
@@ -16,8 +19,32 @@
     <hr>
 
 {% for post in posts %}
+    <div class="post">
     <p class="date">
     {{ post.pub_date }} #{{ post.pk }} <a href="/{{ brd }}/thread/{{ post.pk }}">Ответ</a>
-    </p>{{ post.post_text }}<hr>
+    </p><p style="white-space: pre-line">{{ post.text }}</p>
+    </div>
+
+
+    {% for comment in post.comments.all %}
+        {% if forloop.counter <= 3 %}
+
+
+        <div class="fuck">
+        <div class="quote">>></div>
+        <div class="comment_container">
+        <div class="comment"> <div class="date">
+        {{ comment.pub_date }} #{{ comment.pk }}
+        </div>
+            <div class="text" style="white-space: pre-line">{{ comment.text }} </div></div>
+        </div>
+        </div>
+
+        {% endif %}
+
+    {% endfor %}
+
+    <hr>
+
 {% endfor %}
 {% endblock %}

@@ -6,8 +6,11 @@
     <meta charset="UTF-8">
     <title>{{ title }}</title>
     <link type="text/css" href="{% static 'board/css/styles.css' %}" rel="stylesheet" />
+    <script type="text/javascript" src={% static "board/js/functions.js" %}></script>
 </head>
 <body>
+
+<div class="header"><a href="/">Главная</a> [ <a href="/b/">b</a> /  <a href="/soc/">soc</a> / <a href="/un/">un</a> ]</div><hr>
 {% block content %}
 {% endblock %}
 </body>

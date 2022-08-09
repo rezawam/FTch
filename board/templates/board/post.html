@@ -8,7 +8,7 @@
 
         <form method="post">
             {% csrf_token %}
-            <input type="text" name="post_text">
+            <textarea type="text" name="text" rows="8" cols="35" placeholder="Максимум 15 000 символов"></textarea> <br>
             <input type="submit" value="Отправить">
         </form>
     </div>
@@ -19,7 +19,7 @@
     <div class="post">
     <p class="date">
     {{ p.pub_date }} #{{ p.pk }}
-    </p>{{ p.post_text }}
+    </p><p style="white-space: pre-line">{{ p.text }}</p>
     </div>
 
 
@@ -30,7 +30,7 @@
         <div class="comment"> <div class="date">
         {{ comment.pub_date }} #{{ comment.pk }}
         </div>
-            <div class="text">{{ comment.post_text }} </div></div>
+            <div class="text" style="white-space: pre-line">{{ comment.text }} </div></div>
         </div>
         </div>
 

@@ -55,7 +55,7 @@ a:hover {
   width: fit-content;
   max-width: 80%;
   min-width: 420px;
-  background: #D9DDE6;
+  background: #D7DDED;
   margin-bottom: 3px;
   overflow: hidden;
 
@@ -86,3 +86,13 @@ a:hover {
   min-width: 420px;
   margin-bottom: 15px;
 }
+
+.header {
+  font-size: 9pt;
+}
+
+textarea {
+   font-family: inherit;
+   font-size: 10pt
+}
+
