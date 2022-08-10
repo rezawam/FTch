@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 # from board.views import PostAPIView
 
 urlpatterns = [
@@ -26,5 +27,7 @@ urlpatterns = [
     # path('b/', include('board.urls', namespace='board')),
     # path('faki/', include('board.urls', namespace='board')),
 ]
+
+urlpatterns += staticfiles_urlpatterns()
 
 
