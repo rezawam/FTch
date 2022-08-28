@@ -23,6 +23,7 @@ class Post(models.Model):
                                  related_name='replies',
                                  )  # Able to assign only while creating
 
+
     def __str__(self):
         return self.text
 

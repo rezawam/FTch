@@ -16,16 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-# from board.views import PostAPIView
+
+from board import views
 
 urlpatterns = [
     path('', include('home.urls')),
     path('admin/', admin.site.urls),
     path('<str:brd>/', include('board.urls', namespace='board')),
 
-    # path('<boards[]>/thread/<int:pk>', views.get_comment, name='post'),
-    # path('b/', include('board.urls', namespace='board')),
-    # path('faki/', include('board.urls', namespace='board')),
+    path('api/<str:brd>/', views.PostAPIView.as_view()),
+    path('api/<str:brd>/thread/<int:pk>', views.PostAPIView.as_view())
 ]
 
 urlpatterns += staticfiles_urlpatterns()

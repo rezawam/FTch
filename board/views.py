@@ -1,15 +1,28 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponseNotFound
+from rest_framework import permissions
 
-# from rest_framework import generics
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
+from .serializers import *
 from .models import *
-# from .serializers import PostSerializer
 
 
-# class PostAPIView(generics.ListAPIView):
-#     queryset = Post.objects.all()
-#     serializer_class = PostSerializer
+class PostAPIView(APIView):
+
+    permission_classes = (permissions.AllowAny,)
+    http_method_names = ['get', 'head']
+
+    def get(self, request):
+        posts = Post.objects.all()
+        serializer_for_queryset = PostSerializer(
+            instance=posts,
+            many=True,
+        )
+        return Response(serializer_for_queryset.data)
+
+    # def post(self, request):
 
 
 def get_board_view(request, brd):
