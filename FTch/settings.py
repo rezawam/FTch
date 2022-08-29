@@ -92,7 +92,7 @@ WSGI_APPLICATION = 'FTch.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config(
         # Feel free to alter this value to suit your needs.
-        default='postgres://pt2ch_user:MJfeREhB7Tb3eNg3peLTKOiMIljtbJey@dpg-cbrtboarrk06d5big7g0-a/pt2ch',
+        default='postgres://pt2ch_user:MJfeREhB7Tb3eNg3peLTKOiMIljtbJey@dpg-cbrtboarrk06d5big7g0-a.oregon-postgres.render.com/pt2ch',
         conn_max_age=600
     )
 }
