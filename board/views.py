@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponseNotFound
-from rest_framework import permissions
+from rest_framework import permissions, status
+from rest_framework.decorators import api_view
 
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -9,20 +10,36 @@ from .serializers import *
 from .models import *
 
 
-class PostAPIView(APIView):
+@api_view(['GET', 'POST'])
+def post_list(request):
+    """
+    List all code snippets, or create a new snippet.
+    """
+    if request.method == 'GET':
+        snippets = Post.objects.all()
+        serializer = PostSerializer(snippets, many=True)
+        return Response(serializer.data)
 
-    permission_classes = (permissions.AllowAny,)
-    http_method_names = ['get', 'head']
+    elif request.method == 'POST':
+        serializer = PostSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def get(self, request):
-        posts = Post.objects.all()
-        serializer_for_queryset = PostSerializer(
-            instance=posts,
-            many=True,
-        )
-        return Response(serializer_for_queryset.data)
+# class PostAPIView(APIView):
+#
+#     permission_classes = (permissions.AllowAny,)
+#     http_method_names = ['get', 'head', 'post']
+#
+#     def get(self, request):
+#         posts = Post.objects.all()
+#         serializer_for_queryset = PostSerializer(
+#             instance=posts,
+#             many=True,
+#         )
+#         return Response(serializer_for_queryset.data)
 
-    # def post(self, request):
 
 
 def get_board_view(request, brd):

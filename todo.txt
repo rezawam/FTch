@@ -1,0 +1,5 @@
+– refactor models to rest api
+– write frontend on react
+– add replies
+    – add widget for reply
+– add media

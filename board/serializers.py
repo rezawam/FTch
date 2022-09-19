@@ -1,13 +1,13 @@
 from rest_framework import serializers
-from .models import Post
+from .models import *
 
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
-        fields = (
-            'text',
-            'parent',
-            'pub_date',
-            'board',
-            'reply_to'
-        )
+        fields = '__all__'
+
+class PostFormSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PostForm
+        fields = ['text']
+        

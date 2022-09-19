@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-0(ylnzyvfx&yoaorf2=#u2e1tocqot49v&9^s(l!b3zy4$90mc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -85,16 +85,27 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'FTch.wsgi.application'
 
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
+
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        # Feel free to alter this value to suit your needs.
-        default='postgres://pt2ch_user:MJfeREhB7Tb3eNg3peLTKOiMIljtbJey@dpg-cbrtboarrk06d5big7g0-a.oregon-postgres.render.com/pt2ch',
-        conn_max_age=600
-    )
+    # production
+
+    # 'default': dj_database_url.config(
+    #     # Feel free to alter this value to suit your needs.
+    #     default='postgres://pt2ch_user:MJfeREhB7Tb3eNg3peLTKOiMIljtbJey@dpg-cbrtboarrk06d5big7g0-a.oregon-postgres.render.com/pt2ch',
+    #     conn_max_age=600
+    # ),
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 
@@ -133,7 +144,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, '../static')
 STATICFILES_DIRS = []
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 

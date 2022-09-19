@@ -24,8 +24,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('<str:brd>/', include('board.urls', namespace='board')),
 
-    path('api/<str:brd>/', views.PostAPIView.as_view()),
-    path('api/<str:brd>/thread/<int:pk>', views.PostAPIView.as_view())
+    path('api/posts/', views.post_list),
+    path('api/<str:brd>/thread/<int:pk>', views.post_list)
 ]
 
 urlpatterns += staticfiles_urlpatterns()

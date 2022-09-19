@@ -12,6 +12,7 @@ class Post(models.Model):
     title = models.CharField(max_length=200, blank=True)
     pub_date = models.DateTimeField(auto_now_add=now)
     board = models.CharField(max_length=5)
+    # img = models.ImageField(upload_to='post', null=True, blank=True)
     parent = models.ForeignKey("self",
                                null=True,
                                on_delete=models.CASCADE,
@@ -22,7 +23,6 @@ class Post(models.Model):
                                  on_delete=models.SET_NULL,
                                  related_name='replies',
                                  )  # Able to assign only while creating
-
 
     def __str__(self):
         return self.text
